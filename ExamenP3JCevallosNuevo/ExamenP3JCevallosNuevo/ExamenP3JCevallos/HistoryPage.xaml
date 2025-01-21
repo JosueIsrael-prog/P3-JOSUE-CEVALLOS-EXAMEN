@@ -1,0 +1,24 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExamenP3JCevallos.HistoryPage"
+             xmlns:vm="clr-namespace:ExamenP3JCevallos.ViewModels">
+
+    <ContentPage.BindingContext>
+        <vm:HistoryViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout Padding="10">
+        <Label Text="Historial de Países Consultados" 
+               FontSize="24" 
+               FontAttributes="Bold"
+               HorizontalOptions="Center"/>
+
+        <ListView ItemsSource="{Binding CountriesHistory}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,34 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExamenP3JCevallos.MainPage"
+             xmlns:vm="clr-namespace:ExamenP3JCevallos.ViewModels">
+
+    <ContentPage.BindingContext>
+        <vm:CountriesViewModel />
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout Padding="10">
+        <SearchBar x:Name="CountrySearchBar"
+                   Placeholder="Enter country name"
+                   Text="{Binding SearchText, Mode=TwoWay}"
+                   FontSize="18"/>
+
+        <Button Text="Search"
+                Command="{Binding SearchCountryCommand}"
+                CommandParameter="{Binding Text, Source={x:Reference CountrySearchBar}}"/>
+
+        <Button Text="Clear"
+                Command="{Binding ClearCommand}"/>
+
+        <Button Text="Ver Historial"
+        Clicked="OnHistoryClicked"/>
+
+        <ListView ItemsSource="{Binding Countries}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding CommonName}" Detail="{Binding RegionWithName}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </VerticalStackLayout>
+</ContentPage>
